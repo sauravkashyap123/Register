@@ -19,14 +19,8 @@ const name=req.body.name
 const email=req.body.email
 const password =req.body.password
 const table="demo"
-const res=register(table,name,email,password)
-   if(res!=undefined){
-    res.send("Registerd")
-}
-else{
-    res.send("Error try again after some time")
-}
-
+register(table,name,email,password)
+   res.send("data sent, login to check")
 })
 
 
@@ -54,9 +48,16 @@ const register=async(table,name,email,password)=>{
 
     })
     // console.log(result)
+    if(result.acknowledged){
+    console.log("Registered")
+}
+else{
+    console.log("Error try again after some time")
+}
+
 
  
-        return result
+        
 }
 catch(e){
     return{
