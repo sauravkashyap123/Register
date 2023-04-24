@@ -19,9 +19,17 @@ const name=req.body.name
 const email=req.body.email
 const password =req.body.password
 const table="demo"
+const result=register(table,name,email,password)
 
-register(table,name,email,password)
+if(result!=undefined){
+    res.send("Registerd")
+}
+else{
+    res.send("Error try again after some time")
+}
 })
+
+
 
 app.listen(port,()=>{
     console.log("server started at"+port)
@@ -47,13 +55,7 @@ const register=async(table,name,email,password)=>{
     })
     // console.log(result)
 
-    if(result.acknowledged)
-    {
-        console.log("Registered")
-    }
-    else{
-        console.log("Error try again after some time")
-    }
+    return result
 }
 catch(e){
     return{
