@@ -56,7 +56,7 @@ const register=async(table,name,email,password)=>{
     // console.log(result)
 
  
-        return result.acknowledged
+        return result
 }
 catch(e){
     return{
